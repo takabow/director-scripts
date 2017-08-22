@@ -8,7 +8,9 @@
         "vpc_id": "",
         "subnet_id": "",
         "security_group_id": "",
+        "owner_tag": "",
         "ami_prefix": "",
+        "ami_description": "",
         "ami_virtualization_type": "",
         "root_device_name": "",
         "ssh_username": "",
@@ -24,6 +26,7 @@
         "instance_type": "m3.xlarge",
         "ssh_username": "{{user `ssh_username`}}",
         "ami_name": "{{user `ami_prefix`}} {{timestamp}}",
+        "ami_description": "{{user `ami_description`}}",
         "ami_virtualization_type": "{{user `ami_virtualization_type`}}",
         "ssh_timeout": "10m",
         "launch_block_device_mappings": [{
@@ -31,6 +34,9 @@
             "volume_size": 30,
             "delete_on_termination": true
         }],
+        "run_tags": {
+            "owner": "{{user `owner_tag`}}"
+        },
         "vpc_id": "{{user `vpc_id`}}",
         "subnet_id": "{{user `subnet_id`}}",
         "security_group_id": "{{user `security_group_id`}}",
